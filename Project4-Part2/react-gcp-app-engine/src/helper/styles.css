@@ -1,0 +1,11 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    position: relative;
+
+  }
+  
+  .WheelContainer {
+    /* margin-top: 20px; Adjust the margin as needed */
+    margin-left: 100px;
+  }

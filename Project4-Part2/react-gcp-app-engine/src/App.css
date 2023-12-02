@@ -1,0 +1,116 @@
+.HangmanGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.loginPage{
+  background-color: #4caf50;
+  background-image: url('https://target.scene7.com/is/image/Target/GUEST_c6230c8d-1f26-4724-a635-6e8171265822?wid=1200&hei=1200&qlt=80&fmt=webp');
+  background-size: cover;
+  background-position: center;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding:0;
+  height: 100vh;
+}
+
+.game-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.hangman-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hangman-phrase {
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 8px;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.guess-input {
+  padding: 8px;
+  font-size: 16px;
+  width: 30px;
+  text-align: center;
+}
+
+.guess-button,
+.play-again-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.guess-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.end-game-message {
+  font-size: 20px;
+  margin-top: 20px;
+  color: #e74c3c;
+}
+
+.game-info {
+  text-align: center;
+  font-size: 16px;
+}
+
+.info-text {
+  margin-bottom: 10px;
+}
+
+.game-log {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.play-again-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.log-out{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.clear-all{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.play-again-button:hover {
+  background-color: #2980b9;
+}

@@ -1,7 +1,4 @@
-package com.game.wof.wofgame.entity;
-
-import com.google.cloud.spring.data.datastore.core.mapping.Entity;
-import org.springframework.data.annotation.Id;
+G
 
 @Entity(name = "gameRecords")
 public class GameRecord {

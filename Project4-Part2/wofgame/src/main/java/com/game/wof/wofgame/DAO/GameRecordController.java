@@ -2,6 +2,7 @@ package com.game.wof.wofgame.DAO;
 
 import com.game.wof.wofgame.entity.GameRecord;
 import com.game.wof.wofgame.entity.UserRecord;
+import com.game.wof.wofgame.entity.Phrase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 public class GameRecordController{
     private final GameRecordRepository gameRecordRepository;
     private final UserRecordRepository userRecordRepository;
+    private final PhraseRepository phraseRepository;
 
     /**
      * Constructor
@@ -19,9 +21,10 @@ public class GameRecordController{
      * @param userRecordRepository
      */
     @Autowired
-    public GameRecordController(GameRecordRepository gameRecordRepository,UserRecordRepository userRecordRepository){
+    public GameRecordController(GameRecordRepository gameRecordRepository,UserRecordRepository userRecordRepository, PhraseRepository phraseRepository){
         this.userRecordRepository = userRecordRepository;
         this.gameRecordRepository = gameRecordRepository;
+        this.phraseRepository = phraseRepository;
     }
 
     /**
@@ -140,5 +143,15 @@ public class GameRecordController{
     @CrossOrigin(origins = "*")
     public void deleteByUserId(@RequestParam String userId) {
         gameRecordRepository.deleteByUserId(userId);
+    }
+
+    @GetMapping("/findAllPhrase")
+    @ResponseBody
+    @CrossOrigin(origins = "*")
+    public List<Phrase> findAllPhrase() {
+        Iterable<Phrase> phrases = this.phraseRepository.findAll();
+        List<Phrase> phrasesList = new ArrayList<>();
+        phrases.forEach(phrasesList::add);
+        return phrasesList;
     }
 }

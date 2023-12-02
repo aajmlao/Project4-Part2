@@ -69,7 +69,7 @@ import { firebaseConfig } from '../helper/firebaseConfig';
         // If the user is not logged in, show the login page
         return <Login onLogin={() => setIsLoggedIn(true)}/>;
       }
-
+      
       if (loading) return <div>Loading...</div>;
       if (error) return <div>Error: {error}</div>;
 

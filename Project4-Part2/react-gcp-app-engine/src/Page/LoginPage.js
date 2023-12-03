@@ -36,8 +36,12 @@ import { firebaseConfig } from '../helper/firebaseConfig';
     function Login() {
       // Add any necessary login logic here
       return (
+
         <div className='loginPage'>
-      
+         <h1>Wheel Of Fortune</h1>
+          <div id="image">
+              <img id="homepagewheel" src="https://thetrainingarcade.com/wp-content/uploads/2020/11/WOF-EXTENDED-logo.png" alt="Wheel of Fortune" width="400" height="400"/>
+          </div>
           <button onClick={signInWithGoogle}ype="button" className="btn btn-primary btn-lg">Sign in with Google</button>
           
         </div>

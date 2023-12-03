@@ -10,6 +10,7 @@ export default function Wheel() {
     const [phrases, setPhrases] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showConfetti, setShowConfetti] = useState(false);
 
 const navigateTo = useNavigate();
   const segments = [
@@ -24,9 +25,8 @@ const navigateTo = useNavigate();
   const onFinished = (winner) => {
     console.log("Winner:",winner);
     localStorage.setItem("score",winner);
-    
-    
     setScore(winner);
+    setShowConfetti(true);
   };
 
   function navigateToGame(){
@@ -53,9 +53,9 @@ const navigateTo = useNavigate();
   }, []);
   return (
     <>
-    <div class="container text-center">
-    <h1>The Wheel of Fortune</h1>
-  <div className ="row align-items-center justify-content-center" >
+    <div class="container-text-center">
+    <h1>Spinning Your Wheel</h1>
+    <div className ="spinning-wheel-container" >
     <div class="col-sm-8 align-items-center justify-content-center">
       <div className="WheelContainer">
         <WheelComponent
@@ -71,18 +71,96 @@ const navigateTo = useNavigate();
           downDuration={600}
           fontFamily="Arial"
         />
-      </div></div>
-    <div className="col-sm-4 align-items-center justify-content-center">
+      </div>
+    </div>
+    <div className="spin-result">
     {score != "" &&(
         <div>
-        <h5>You got {score} points</h5>
-        <button onClick = {() => navigateToGame()} className="btn btn-primary btn-lg"> Good Luck </button>
+          <div id = "confetti">
+          {showConfetti && (
+                    <>
+                      {/* Add as many confetti elements as you want */}
+                      <div className="confetti1" style={{ top: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                      <div className="confetti2" style={{ left: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                      <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti4" style={{ left: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                      <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti1" style={{ left: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                      <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti3" style={{ left: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                      <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti1" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti1" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti1" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti1" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                      {/* ... */}
+                  
+                    {/* Add as many confetti elements as you want */}
+                    <div className="confetti1" style={{ top: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                    <div className="confetti2" style={{ left: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                    <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti4" style={{ left: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                    <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti1" style={{ left: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                    <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti3" style={{ left: `${Math.random() * 100}vw`, top: `${Math.random() * 100}vh` }}></div>
+                    <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti1" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti1" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti1" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti1" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti2" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti3" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti4" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    <div className="confetti5" style={{ left: `${Math.random() * 100}vw` , top: `${Math.random() * 100}vh`}}></div>
+                    {/* ... */}
+                  </>
+                  )}
+          </div>
+          <div id="spin-score" className={`score-display ${score !== "" ? "show-score" : ""}`}>
+            <div>
+            <h2>You got {score} points</h2>
+            </div>
+            <div id = "goodluck-button">
+            <button onClick = {() => navigateToGame()} className="btn btn-primary btn-lg"> Good Luck </button>
+            </div>
+          </div>
         </div>
       )
       }
     </div>
-  </div>
-  </div>
+    </div>
+   </div>
     </>
       );
 }

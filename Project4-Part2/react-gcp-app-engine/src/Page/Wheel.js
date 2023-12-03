@@ -2,10 +2,8 @@ import React, { Component,useState, useEffect } from 'react';
 import "../helper/styles.css";
 import WheelComponent from 'react-wheel-of-prizes';
 import { useNavigate } from 'react-router-dom';
-import { fetchPhrases } from '../helper/phrase'; 
 import axios from 'axios';
-
-
+// function wheel
 export default function Wheel() {
     const [score, setScore] = useState('');
     const [phrases, setPhrases] = useState([]);
@@ -13,8 +11,8 @@ export default function Wheel() {
     const [error, setError] = useState(null);
     const [showConfetti, setShowConfetti] = useState(false);
     const [selectedDifficulty, setSelectedDifficulty] = useState(null);
-
-const navigateTo = useNavigate();
+    const navigateTo = useNavigate();
+    //input
   const segments = [
     "1100",
     "1600",
@@ -23,42 +21,29 @@ const navigateTo = useNavigate();
     "500",
     "800"
   ];
+  //input
   const segColors = ["#EE4040", "#F0CF50", "#815CD1", "#3DA5E0", "#34A24F"];
+  //const when we get winner
   const onFinished = (winner) => {
     console.log("Winner:",winner);
     localStorage.setItem("score",winner);
     setScore(winner);
     setShowConfetti(true);
   };
-
+  // navigate function to next page
   function navigateToGame(){
     console.log("Phrase", phrases)
     const transformedArray = phrases.map((item) => item.phrase);
     localStorage.setItem("phrases", transformedArray);
     navigateTo("/game");
   }
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const userResponse = await fetchPhrases();
-  //       setPhrases(userResponse.data);
-  //       console.log("API: ",userResponse.data)
-  //       setLoading(false);
-  //     } catch (error) {
-  //       setError(error.message);
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
+  // call the url and fetch the data
   const fetchPhrasesByDifficulty = async (difficulty) => {
     try {
-      const userResponse = await axios.get(`https://gamerecords-406318.uc.r.appspot.com/findByDifficulty${difficulty}`);
+      const userResponse = await axios.get(`https://gamerecords-406318.uc.r.appspot.com/findByDifficulty?difficulty=${difficulty}`);
       ;
       setPhrases(userResponse.data);
+      console.log("phrase set: ",userResponse.data);
       setLoading(false);
     } catch (error) {
       setError(error.message);
@@ -73,7 +58,7 @@ const navigateTo = useNavigate();
   const handleDifficultyClick = (difficulty) => {
     setSelectedDifficulty(difficulty);
   };
-
+  //everything we need to return
   return (
     <>
     <div class="container-text-center">

@@ -1,5 +1,4 @@
-// guessing phrases
-
-  export const targetPhrases =  localStorage.getItem("phrases").split(',')
+// guessing phrases. It was static array here. now change to the data from the cloud.
+export const targetPhrases =  localStorage.getItem("phrases").split(',')
 
   

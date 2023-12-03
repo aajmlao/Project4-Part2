@@ -240,14 +240,11 @@ function WofGame() {
           setGameRecords(response.data);  // Axios packs the response in a 'data' property
           setLoading(false);
           //console.log(response.data);
-          
         })
         .catch(error => {
           setError(error.message);
           setLoading(false);
         });
-
-
       };
 
   // fetch user record
@@ -256,9 +253,7 @@ function WofGame() {
       .then(response => {
         setUserRecords(response.data);  // Axios packs the response in a 'data' property
         setLoading(false);
-       
         const userRecord = response.data.find(user => user.userId === userId);
-        
         if (userRecord) {
           console.log("User Id is found:", userRecord.handle);
           setHandle(userRecord.handle)
@@ -267,8 +262,6 @@ function WofGame() {
           console.log("User not found with userId:", userId);
           setNotFoundUserId(false)
         }
-  
-
       })
       .catch(error => {
         setError(error.message);
@@ -375,7 +368,7 @@ function WofGame() {
       }
     },[submitted])// This dependency array ensures it re-runs when submitted changes
 
-
+  // everything we need to return for wofGame.
   return (
    <div className="HangmanGame">
       <h1 className="game-title">Wheel Of Fortune</h1>
@@ -510,16 +503,6 @@ function WofGame() {
         })}
     </tbody>
   </table>
-        {/* {groupedData.map((record) => (
-          <li key={record.userId}>
-            Player: {record.handle}
-            {record.gameRecords.map(gameRecord => (
-              <div key={gameRecord.gameId}>
-                Score: {gameRecord.score}, Date: {gameRecord.date.split(' ').slice(1,4).join('-')}
-              </div>
-            ))}
-          </li>
-        ))} */}
       </div>
       </div>
     </div>

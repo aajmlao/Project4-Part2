@@ -170,6 +170,7 @@ function WofGame() {
         } else {
             const log = `${guess} has been guessed previously. Please try again.`;
             setGameLogs((prevLogs) => [...prevLogs, log]);
+            setUserInput('');
         }
         
         }
@@ -400,7 +401,7 @@ function WofGame() {
           <button type="submit" className="btn btn-primary btn-lg">Update</button>
         </form>
       <div className="hangman-container">
-
+        
         <div className="hangman-phrase">{asterisks}</div>
         
         <div className="input-container">

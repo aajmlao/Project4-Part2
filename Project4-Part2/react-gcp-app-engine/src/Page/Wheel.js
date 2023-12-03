@@ -1,11 +1,16 @@
-import React, { Component,useState } from 'react';
+import React, { Component,useState, useEffect } from 'react';
 import "../helper/styles.css";
 import WheelComponent from 'react-wheel-of-prizes';
 import { useNavigate } from 'react-router-dom';
+import { fetchPhrases } from '../helper/phrase'; 
 
 
 export default function Wheel() {
     const [score, setScore] = useState('');
+    const [phrases, setPhrases] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
 const navigateTo = useNavigate();
   const segments = [
     "1000",
@@ -19,13 +24,33 @@ const navigateTo = useNavigate();
   const onFinished = (winner) => {
     console.log("Winner:",winner);
     localStorage.setItem("score",winner);
+    
+    
     setScore(winner);
   };
 
   function navigateToGame(){
+    console.log("Phrase", phrases)
+    const transformedArray = phrases.map((item) => item.phrase);
+    localStorage.setItem("phrases", transformedArray);
     navigateTo("/game");
-    
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userResponse = await fetchPhrases();
+        setPhrases(userResponse.data);
+        console.log("API: ",userResponse.data)
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
     <div class="container text-center">

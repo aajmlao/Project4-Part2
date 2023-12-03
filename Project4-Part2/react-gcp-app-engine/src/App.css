@@ -1,4 +1,8 @@
 .HangmanGame {
+  background: linear-gradient(217deg, rgba(128, 0, 255, 0.8), rgba(136, 0, 255, 0) 70.71%),
+            linear-gradient(127deg, #711666fb, rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+            min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -156,16 +160,45 @@ background: linear-gradient(217deg, rgba(128, 0, 255, 0.8), rgba(136, 0, 255, 0)
 }
 
 .game-title {
-  font-size: 24px;
+  font-size: 40px;
   margin-bottom: 20px;
   color: rgb(42, 12, 72);
+}
+
+#user-table{
+  /* margin-left: 50px; */
+  width:100%;
+ 
+}
+
+#userrecord{
+  margin: 0px 50px;
+  border: 1px solid #000; 
+  height: 70vh;
+}
+
+#allgamerecord{
+  margin: 0px 50px;
+  border: 1px solid #000; 
+  height: 70vh;
+}
+
+#all-table{
+  width:100%;
+
+}
+
+#HangmanGame-body{
+  display: grid;
+  width: 100vw;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .hangman-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff;
+  
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -241,13 +274,14 @@ background: linear-gradient(217deg, rgba(128, 0, 255, 0.8), rgba(136, 0, 255, 0)
 }
 .log-out{
   position: absolute;
-  top: 0px;
-  right: 0px;
+  bottom: 150px;
+  left: 50%;
+
 }
 .clear-all{
   position: absolute;
-  top: 0px;
-  left: 0px;
+  bottom: 150px;
+
 }
 .play-again-button:hover {
   background-color: #2980b9;

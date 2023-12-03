@@ -379,27 +379,56 @@ function WofGame() {
   return (
    <div className="HangmanGame">
       <h1 className="game-title">Wheel Of Fortune</h1>
+      <div id = "HangmanGame-body">
+      <div id = "userrecord"> 
+        <h3>Your Records</h3>
+    <table id = "user-table">
+    <thead>
+      <tr>
+        <th>Handle</th>
+        <th>Score</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {groupedData
+        .filter((record) => record.userId === userId) // Filter records for the current user
+        .map((record) => (
+          <tr key={record.userId}>
+            <td>{record.handle}</td>
+            {record.gameRecords.map((gameRecord) => (
+              <React.Fragment key={gameRecord.gameId}>
+                <td>{gameRecord.score}</td>
+                <td>{gameRecord.date.split(' ').slice(1, 4).join('-')}</td>
+              </React.Fragment>
+            ))}
+          </tr>
+        ))}
+    </tbody>
+  </table>
+      </div>
+      <div id = "game-process-container">
       {handle ? (
         <h5>Welcome: {handle}</h5>
        ) : (
         <h5>Welcome: Guess</h5>
       )}
-      <p>Current Date: {date}</p>
+      {/* <p>Current Date: {date}</p> */}
       <p>You have : {score} points</p>
-    {phrase === asterisks &&(
+      {phrase === asterisks &&(
       <form onSubmit={handleGameRecordSubmit}>
         <button type = "submit" className="btn btn-primary btn-lg"> Save Game</button>
         <button type="button" className="btn btn-secondary btn-lg" onClick={dontSave}>Don't Save</button>
        </form>
-    )}
+      )}
 
-    <form onSubmit={handleUsernameSubmit}>
+      <form onSubmit={handleUsernameSubmit}>
           <label>
             Enter Username:
             <input type="text" value={usernameInput} onChange={handleUsernameChange} />
           </label>
           <button type="submit" className="btn btn-primary btn-lg">Update</button>
-        </form>
+      </form>
       <div className="hangman-container">
         
         <div className="hangman-phrase">{asterisks}</div>
@@ -443,21 +472,47 @@ function WofGame() {
       </div>
       <div>
       {/* Button to trigger the delete action */}
-      <button onClick={handleDeleteSelected}>Delete ALL {handle}'s Game Records</button>
-    </div>
+        <button onClick={handleDeleteSelected}>Delete ALL {handle}'s Game Records</button>
+      </div>
+      </div>
       {/* Display Game Records */}
-      <div>
-        <h2>Game Records</h2>
-        {groupedData.map((record) => (
-      <li key={record.userId}>
-        Player: {record.handle}
-        {record.gameRecords.map(gameRecord => (
-          <div key={gameRecord.gameId}>
-            Score: {gameRecord.score}, Date: {gameRecord.date}
-          </div>
-        ))}
-      </li>
-      ))}
+      <div id = "allgamerecord"> 
+        <h3>All Game Records</h3>
+        <table id = "all-table">
+    <thead>
+      <tr>
+        <th>Handle</th>
+        <th>Score</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {gameRecords
+        .sort((a, b) => b.score - a.score) // Sort records by score in descending order
+        .map((gameRecord) => {
+          const userRecord = userRecords.find((user) => user.userId === gameRecord.userId);
+          const handle = userRecord ? userRecord.handle : 'Unknown'; // Use 'Unknown' if userRecord not found
+          return (
+            <tr key={gameRecord.gameId}>
+              <td>{handle}</td>
+              <td>{gameRecord.score}</td>
+              <td>{gameRecord.date.split(' ').slice(1, 4).join('-')}</td>
+            </tr>
+          );
+        })}
+    </tbody>
+  </table>
+        {/* {groupedData.map((record) => (
+          <li key={record.userId}>
+            Player: {record.handle}
+            {record.gameRecords.map(gameRecord => (
+              <div key={gameRecord.gameId}>
+                Score: {gameRecord.score}, Date: {gameRecord.date.split(' ').slice(1,4).join('-')}
+              </div>
+            ))}
+          </li>
+        ))} */}
+      </div>
       </div>
     </div>
     

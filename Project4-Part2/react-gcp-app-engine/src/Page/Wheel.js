@@ -3,6 +3,7 @@ import "../helper/styles.css";
 import WheelComponent from 'react-wheel-of-prizes';
 import { useNavigate } from 'react-router-dom';
 import { fetchPhrases } from '../helper/phrase'; 
+import axios from 'axios';
 
 
 export default function Wheel() {
@@ -11,6 +12,7 @@ export default function Wheel() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showConfetti, setShowConfetti] = useState(false);
+    const [selectedDifficulty, setSelectedDifficulty] = useState(null);
 
 const navigateTo = useNavigate();
   const segments = [
@@ -36,21 +38,42 @@ const navigateTo = useNavigate();
     navigateTo("/game");
   }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const userResponse = await fetchPhrases();
-        setPhrases(userResponse.data);
-        console.log("API: ",userResponse.data)
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const userResponse = await fetchPhrases();
+  //       setPhrases(userResponse.data);
+  //       console.log("API: ",userResponse.data)
+  //       setLoading(false);
+  //     } catch (error) {
+  //       setError(error.message);
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
+
+  const fetchPhrasesByDifficulty = async (difficulty) => {
+    try {
+      const userResponse = await axios.get(`https://gamerecords-406318.uc.r.appspot.com/findByDifficulty${difficulty}`);
+      ;
+      setPhrases(userResponse.data);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPhrasesByDifficulty(selectedDifficulty);
+  }, [selectedDifficulty]);
+
+  const handleDifficultyClick = (difficulty) => {
+    setSelectedDifficulty(difficulty);
+  };
+
   return (
     <>
     <div class="container-text-center">
@@ -151,9 +174,17 @@ const navigateTo = useNavigate();
             <div>
             <h2>You got {score} points</h2>
             </div>
-            <div id = "goodluck-button">
-            <button onClick = {() => navigateToGame()} className="btn btn-primary btn-lg"> Good Luck </button>
+            <div id="difficulty-buttons">
+              <p>Choose Difficulty:</p>
+              <button onClick={() => handleDifficultyClick("easy")}>Easy</button>
+              <button onClick={() => handleDifficultyClick("medium")}>Medium</button>
+              <button onClick={() => handleDifficultyClick("hard")}>Hard</button>
             </div>
+            {selectedDifficulty && (
+                  <div id="goodluck-button">
+                    <button onClick={() => navigateToGame()} className="btn btn-primary btn-lg"> Good Luck </button>
+                  </div>
+                )}
           </div>
         </div>
       )

@@ -313,3 +313,11 @@ tr{
 .play-again-button:hover {
   background-color: #2980b9;
 }
+
+#difficulty-buttons p{
+  font-size: 18px;
+  font-weight: 600;
+}
+#difficulty-buttons{
+  margin-bottom: 30px;
+}

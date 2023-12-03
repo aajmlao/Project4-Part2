@@ -176,10 +176,11 @@ const navigateTo = useNavigate();
             </div>
             <div id="difficulty-buttons">
               <p>Choose Difficulty:</p>
-              <button onClick={() => handleDifficultyClick("easy")}>Easy</button>
-              <button onClick={() => handleDifficultyClick("medium")}>Medium</button>
-              <button onClick={() => handleDifficultyClick("hard")}>Hard</button>
+              <button onClick={() => handleDifficultyClick("easy")} className="btn btn-primary btn-lg">Easy</button>
+              <button onClick={() => handleDifficultyClick("medium")} className="btn btn-primary btn-lg">Medium</button>
+              <button onClick={() => handleDifficultyClick("hard")} className="btn btn-primary btn-lg">Hard</button>
             </div>
+            <div></div>
             {selectedDifficulty && (
                   <div id="goodluck-button">
                     <button onClick={() => navigateToGame()} className="btn btn-primary btn-lg"> Good Luck </button>

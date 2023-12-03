@@ -415,23 +415,17 @@ function WofGame() {
       )}
       {/* <p>Current Date: {date}</p> */}
       <p>You have : {score} points</p>
-      {phrase === asterisks &&(
-      <form onSubmit={handleGameRecordSubmit}>
-        <button type = "submit" className="btn btn-primary btn-lg"> Save Game</button>
-        <button type="button" className="btn btn-secondary btn-lg" onClick={dontSave}>Don't Save</button>
-       </form>
-      )}
 
       <form onSubmit={handleUsernameSubmit}>
           <label>
             Enter Username:
             <input type="text" value={usernameInput} onChange={handleUsernameChange} />
           </label>
-          <button type="submit" className="btn btn-primary btn-lg">Update</button>
+          <button type="submit" className="update">Update</button>
       </form>
       <div className="hangman-container">
         
-        <div className="hangman-phrase">{asterisks}</div>
+      <div className="hangman-phrase">{asterisks}</div>
         
         <div className="input-container">
           <input
@@ -446,31 +440,45 @@ function WofGame() {
           <button onClick={handleGuess} disabled={outOfGuess} className="guess-button">
             Guess
           </button>
-
-          <div className='log-out'>
-            <button onClick = {handleLogout}type="button" className="btn btn-primary btn-lg">
-            Logout
-          </button>
-          </div>
-          <div className='clear-all'>
-            <button onClick = {dontSave}type="button" className="btn btn-primary btn-lg"> Clear all</button>
           </div>
 
-          {outOfGuess && <p className="end-game-message">{message}</p>}
+          {outOfGuess && 
+          <div>
+          <p className="end-game-message">{message}</p>
           <button onClick={initializeGame} className="play-again-button">
              Continue
           </button>
-        </div>
+          </div>
+          }
+        {/* </div> */}
+        {! outOfGuess && 
         <div className="game-info">
           <p className="info-text">
             Attendance: {numGuess}, Missed: {missGuess}
           </p>
-          {gameLogs.map((log, index) => (
+          <p className="game-log">{gameLogs.slice(-1)}</p>
+          {/* {gameLogs.map((log, index) => (
             <p key={index} className="game-log">{log}</p>
-          ))}
-        </div>
+          ))} */}
+        </div>}
+        {phrase === asterisks &&(
+          <form onSubmit={handleGameRecordSubmit}>
+            <button type = "submit" className="btn btn-primary btn-lg"> Save Game</button>
+            <button type="button" className="btn btn-secondary btn-lg" onClick={dontSave}>Don't Save</button>
+          </form>
+        )}
       </div>
-      <div>
+      <div className='log-out'>
+          <button onClick = {handleLogout}type="button" className=" btn-primbtnary btn-lg">
+            Logout
+          </button>
+      </div>
+          <div className='clear-all'>
+            <button onClick = {dontSave}type="button" className="btn btn-primary btn-lg"> 
+            Clear all
+            </button>
+          </div>
+      <div id = "deleterecords">
       {/* Button to trigger the delete action */}
         <button onClick={handleDeleteSelected}>Delete ALL {handle}'s Game Records</button>
       </div>

@@ -10,6 +10,21 @@
   padding: 20px;
 }
 
+label {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.update{
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 10%;
+}
+
 .loginPage{
   background: linear-gradient(217deg, rgba(128, 0, 255, 0.8), rgba(136, 0, 255, 0) 70.71%),
             linear-gradient(127deg, #711666fb, rgba(0,255,0,0) 70.71%),
@@ -221,7 +236,7 @@ background: linear-gradient(217deg, rgba(128, 0, 255, 0.8), rgba(136, 0, 255, 0)
 .guess-input {
   padding: 8px;
   font-size: 16px;
-  width: 30px;
+  width: 70px;
   text-align: center;
 }
 
@@ -272,15 +287,27 @@ background: linear-gradient(217deg, rgba(128, 0, 255, 0.8), rgba(136, 0, 255, 0)
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
+
 .log-out{
   position: absolute;
-  bottom: 150px;
-  left: 50%;
+  bottom: 50px;
+  left: 60%;
+}
+.log-out button{
+  background-color: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1.25em;
+  border-radius: 10%;
+}
 
+tr{
+  font-size: 18px;
 }
 .clear-all{
   position: absolute;
-  bottom: 150px;
+  bottom: 50px;
 
 }
 .play-again-button:hover {

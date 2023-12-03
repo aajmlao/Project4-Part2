@@ -3,8 +3,10 @@ package com.game.wof.wofgame;
 
 import com.game.wof.wofgame.DAO.GameRecordRepository;
 import com.game.wof.wofgame.DAO.UserRecordRepository;
+import com.game.wof.wofgame.DAO.PhraseRepository;
 import com.game.wof.wofgame.entity.GameRecord;
 import com.game.wof.wofgame.entity.UserRecord;
+import com.game.wof.wofgame.entity.Phrase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +25,7 @@ public class WofgameApplication {
 	@Autowired
 	GameRecordRepository gameRecordRepository;
 	UserRecordRepository userRecordRepository;
+	PhraseRepository phraseRepository;
 
 
 	public static void main(String[] args) {
@@ -154,6 +157,7 @@ public class WofgameApplication {
 
 	@ShellMethod("Save a game record to cloud Datastore: save-gameRecord <userId> <score> <date>")
 	public String savePhrase(String phrase, String difficulty){
-		Phrase savePhrase = this.phraseRepository.save(new Phrase(phrase, difficulty))		return savePhrase.toString();
+		Phrase savePhrase = this.phraseRepository.save(new Phrase(phrase, difficulty));	
+		return savePhrase.toString();
 	}
 }

@@ -13,12 +13,12 @@ export default function Wheel() {
 
 const navigateTo = useNavigate();
   const segments = [
-    "1000",
-    "2000",
-    "1200",
-    "100",
+    "1100",
+    "1600",
+    "1400",
+    "200",
     "500",
-    "600"
+    "800"
   ];
   const segColors = ["#EE4040", "#F0CF50", "#815CD1", "#3DA5E0", "#34A24F"];
   const onFinished = (winner) => {

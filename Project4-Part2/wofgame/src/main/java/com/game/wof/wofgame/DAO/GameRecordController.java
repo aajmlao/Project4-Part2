@@ -154,4 +154,25 @@ public class GameRecordController{
         phrases.forEach(phrasesList::add);
         return phrasesList;
     }
+
+    @PostMapping("/savePhrase")
+    @CrossOrigin(origins = "*")
+    public String savePhrase(@RequestBody Phrase phrase){
+        if (phrase == null){
+            return "phrase is null";
+        }
+        this.phraseRepository.save(phrase);
+        return "success";
+    }
+
+    @GetMapping("/findByDifficulty")
+    @ResponseBody
+    @CrossOrigin(origins = "*")
+    public List<Phrase> findByDifficulty(@RequestParam String difficulty) {
+        Iterable<Phrase> phrases = this.phraseRepository.findByDifficulty(difficulty);
+        List<Phrase> phrasesList = new ArrayList<>();
+        phrases.forEach(phrasesList::add);
+        return phrasesList;
+    }
+
 }

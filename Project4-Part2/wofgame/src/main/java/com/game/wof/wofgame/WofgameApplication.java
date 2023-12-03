@@ -151,4 +151,9 @@ public class WofgameApplication {
 		this.gameRecordRepository.deleteAll();
 		this.userRecordRepository.deleteAll();
 	}
+
+	@ShellMethod("Save a game record to cloud Datastore: save-gameRecord <userId> <score> <date>")
+	public String savePhrase(String phrase, String difficulty){
+		Phrase savePhrase = this.phraseRepository.save(new Phrase(phrase, difficulty))		return savePhrase.toString();
+	}
 }

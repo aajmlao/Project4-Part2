@@ -10,8 +10,11 @@ public class Phrase {
 
     String phrase;
 
-    public Phrase(String phrase){
+    String difficulty;
+
+    public Phrase(String phrase, String difficulty){
         this.phrase = phrase;
+        this.difficulty = difficulty;
     }
 
     public String getPhrase(){
@@ -22,11 +25,20 @@ public class Phrase {
         this.phrase = phrase;
     }
 
+    public String getDifficulty(){
+        return this.difficulty;
+    }
+    
+    public void setDifficulty(String difficulty){
+        this.difficulty = difficulty;
+    }
+
     @Override
     public String toString() {
         return "Phrase{" +
                 "id=" + id +
                 ", phrase='" + phrase + '\'' +
+                 ", difficulty='" + difficulty + '\'' +
                 '}';
     }
 }
